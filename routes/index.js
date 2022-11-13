@@ -26,9 +26,9 @@ router.get('/sign_in', function(req, res, next)
   res.render('sign_in', {title: 'Sign in page' });
 });
 
-router.get('/settings/settings', function(req, res, next)
+router.get('/settings', function(req, res, next)
 {
-  res.render('settings', {title: 'Settings' });
+  res.render('settings/settings', {title: 'Settings' });
 });
 
 module.exports = router;
