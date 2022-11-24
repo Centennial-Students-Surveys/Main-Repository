@@ -12,9 +12,11 @@ var app = express();
 //modules for authentication 
 let session = require('express-session');
 let passport = require('passport');
+//let passport = require('./config/passport');
 let passportLocal = require('passport-local');
 let localStrategy = passportLocal.Strategy;
 let flash = require('connect-flash');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,6 +27,32 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
+
+//Setup express session!!!!
+app.use(session({
+  secret: "SomeSecret",
+  saveUninitialized: false,
+  resave: false
+}));
+
+//Init flash
+app.use(flash());
+
+//Init passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+//passport student config
+
+//create a Student model
+let studentModel = require('./models/student');
+let Student = studentModel.Student;
+
+//Serialize and deserialize
+passport.serializeUser(Student.serializeUser());
+passport.deserializeUser(Student.deserializeUser());
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

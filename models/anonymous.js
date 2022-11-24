@@ -39,8 +39,9 @@ let Anonymous = mongoose.Schema(
         type: Date,
         default: Date.now
     }*/
-}, {
-    collection: "anonymouss"
+}, 
+{
+    collection: "anonymous"
 });
 
 // configure options for Anonymous Model

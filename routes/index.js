@@ -1,33 +1,26 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index',{title: 'Home Page' });
-});
+//Fetch the controllers
+let indexController = require('../controllers/index');
 
-//Route to Student's feedbacks page
-router.get('/studfeeds', function(req, res, next)
-{
-  res.render('studfeeds', {title: 'Students feedbacks page' });
-});
+//Get Home Page through controller folder <>
+router.get('/', indexController.displayHomePage);
 
-//Route to Professor's rate page
-router.get('/profrate', function(req, res, next)
-{
-  res.render('profrate', {title: 'Professors rate page' });
-});
+//Get Student's feedbacks through controller folder <>
+router.get('/studfeeds', indexController.displayStudentFeedbacks)
 
-//Route to About College info
-router.get('/about', function(req, res, next)
-{
-  res.render('about', {title: 'About college page' });
-});
+//Get Professor's page through controller folder <>
+router.get('/profrate', indexController.displayProfessors);
 
-//Route to sigh in page (if authorization was successfull) <needs to add a user id from db to /accout#id(post)
+//Get About page through controller folder <>
+router.get('/about', indexController.displayAboutPage);
+
+//Get Sign in Page through controller folder <>
+//router.get('/sign_in', indexController.displayLoginPage)//Fix once DB will work
 router.get('/sign_in', function(req, res, next)
 {
-  res.render('sign_in', {title: 'Sign in page' });
+  res.render('sign_in', {title: 'Settings' });
 });
 
 //Route to user's settings from accout(only for authorized users)
@@ -47,5 +40,17 @@ router.get('/signup',function(req,res,next)
 {
   res.render('signup/signup', {title: 'Registration Page'});
 });
+
+/* GET home page. */
+//router.get('/', function(req, res, next)
+//{
+//  res.render('index',{title: 'Home Page' });
+//});
+
+//Route to sigh in page (if authorization was successfull) <needs to add a user id from db to /accout#id(post)
+//router.get('/sign_in', function(req, res, next)
+//{
+//  res.render('sign_in', {title: 'Sign in page' });
+//});
 
 module.exports = router;
