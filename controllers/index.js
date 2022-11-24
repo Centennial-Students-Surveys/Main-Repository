@@ -4,7 +4,7 @@ let mongoose = require ('mongoose');
 
 
 // jwt + DB 
-let DB = require('../config/db)
+let DB = require('../config/db');
 
 //User Model Instance 
 
