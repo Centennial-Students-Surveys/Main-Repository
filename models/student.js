@@ -4,56 +4,55 @@ let passportLocalMongoose = require('passport-local-mongoose');
 
 let Student = mongoose.Schema(
 {
-    FirstName: String,
-    LastName:  String,
-    Email: String,
-    Password: String,
-    Stars: Number,
-    Feedback: String,
-    Department: String
-    /*
-    firstName: {
+    //FirstName: String,
+    //LastName:  String,
+    //Email: String,
+    //Password: String,
+    //Stars: Number,
+    //Feedback: String,
+    //Department: String
+    FirstName: {
         type: String,
         default: '',
         trim: true,
         required: 'First Name is required'
     },
-    lastName: {
+    LastName: {
         type: String,
         default: '',
         trim: true,
         required: 'Last Name is required'
     },
-    email: {
+    Email: {
         type: String,
         default: '',
         trim: true,
         required: 'Email is required'
     },
-    password: {
+    Password: {
         type: String,
         default: '',
         trim: true,
         required: 'password is required'
     },
-    stars: {
-        type: String,
+    Stars: {
+        type: Number,
         default: '',
         trim: true,
         required: 'Stars is required'
     },
-    feedback: {
+    Feedback: {
         type: String,
         default: '',
         trim: true,
         required: 'Feedback is required'
     },
-    department: {
+    Department: {
         type: String,
         default: '',
         trim: true,
         required: 'Department is required'
-    },*/
+    },
 }, 
 {
     collection: "students"
