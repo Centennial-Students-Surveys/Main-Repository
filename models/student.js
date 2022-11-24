@@ -2,7 +2,16 @@
 let mongoose = require('mongoose');
 let passportLocalMongoose = require('passport-local-mongoose');
 
-let Student = mongoose.Schema({
+let Student = mongoose.Schema(
+{
+    FirstName: String,
+    LastName:  String,
+    Email: String,
+    Password: String,
+    Stars: Number,
+    Feedback: String,
+    Department: String
+    /*
     firstName: {
         type: String,
         default: '',
@@ -44,21 +53,14 @@ let Student = mongoose.Schema({
         default: '',
         trim: true,
         required: 'Department is required'
-    },
-    created: {
-        type: Date,
-        default: Date.now
-    },
-    update: {
-        type: Date,
-        default: Date.now
-    }
-}, {
+    },*/
+}, 
+{
     collection: "students"
 });
 
 // configure options for Students Model
-
 let options = ({ missingPasswordError: 'Wrong / Missing Password' });
 Student.plugin(passportLocalMongoose, options);
+
 module.exports.Student = mongoose.model('Student', Student);

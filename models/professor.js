@@ -2,8 +2,14 @@
 let mongoose = require('mongoose');
 let passportLocalMongoose = require('passport-local-mongoose');
 
-let Professor = mongoose.Schema({
-    firstName: {
+let Professor = mongoose.Schema(
+{
+    Firstname: String,
+    LastName:  String,
+    StarsSkills: Number,
+    StarsComplexity: Number,
+    Department: String
+    /*firstName: {
         type: String,
         default: '',
         trim: true,
@@ -40,8 +46,9 @@ let Professor = mongoose.Schema({
     update: {
         type: Date,
         default: Date.now
-    }
-}, {
+    }*/
+}, 
+{
     collection: "professors"
 });
 

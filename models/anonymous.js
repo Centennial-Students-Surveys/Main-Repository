@@ -2,8 +2,12 @@
 let mongoose = require('mongoose');
 let passportLocalMongoose = require('passport-local-mongoose');
 
-let Anonymous = mongoose.Schema({
-    feedback: {
+let Anonymous = mongoose.Schema(
+    {
+        Firstname: String,
+        Comment: String,
+        Stars: Number,
+    /*feedback: {
         type: String,
         default: '',
         trim: true,
@@ -34,7 +38,7 @@ let Anonymous = mongoose.Schema({
     update: {
         type: Date,
         default: Date.now
-    }
+    }*/
 }, {
     collection: "anonymouss"
 });
