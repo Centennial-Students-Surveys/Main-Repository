@@ -4,9 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 var app = express();
 
 //modules for authentication 
@@ -16,6 +13,25 @@ let passport = require('passport');
 let passportLocal = require('passport-local');
 let localStrategy = passportLocal.Strategy;
 let flash = require('connect-flash');
+
+
+// <--------Maksat's edit-------->
+// database setup
+let mongoose = require('mongoose');
+let DB = require('./config/db');
+
+// point mongoose to the DB URI
+mongoose.connect(DB.URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
+let mongoDB = mongoose.connection;
+mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
+mongoDB.once('open', () => {
+    console.log('Connected to MongoDB...');
+});
+
+let indexRouter = require('./routes/index');
+let usersRouter = require('./routes/users');
+// <--------Maksat's edit-------->
 
 
 // view engine setup
@@ -31,9 +47,9 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 
 //Setup express session!!!!
 app.use(session({
-  secret: "SomeSecret",
-  saveUninitialized: false,
-  resave: false
+    secret: "SomeSecret",
+    saveUninitialized: false,
+    resave: false
 }));
 
 //Init flash
@@ -53,24 +69,24 @@ let Student = studentModel.Student;
 passport.serializeUser(Student.serializeUser());
 passport.deserializeUser(Student.deserializeUser());
 
-
+// routing
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+    next(createError(404));
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;
