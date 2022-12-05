@@ -2,6 +2,9 @@ let express = require ('express');
 let router = express.Router();
 let mongoose = require ('mongoose');
 
+//passport
+let passport = require('passport');
+
 // jwt + DB 
 let DB = require('../config/db');
 
@@ -41,18 +44,19 @@ module.exports.displayAboutPage = (req,res, next) =>
    res.render('about', {title: 'About college page' });
 };
 
+//Route to account
 
 //Get Route to Sign in
 module.exports.displayLoginPage = (req,res, next) =>  
 {
-    console.log(student);
+    //console.log(student);
     if(!req.student)
     {
-        res.render('views/sign_in',
+        res.render('sign_in',
         {
             title: "Login",
-            messages: req.flash('loginMessage'),
-            displayName: req.student ? req.student.displayName : ''
+            messages: req.flash('loginMessage')
+            //FirstName: req.student ? req.student.FirstName: ''//We have to do smt with user(student) soon....
         });
     }
     else
@@ -61,7 +65,7 @@ module.exports.displayLoginPage = (req,res, next) =>
     }
 }
 
-//Post Sign in
+//Post Sign in to Account
 module.exports.processLoginPage = ( req, res, next ) => 
 {
     passport.authenticate('local', 
@@ -71,10 +75,11 @@ module.exports.processLoginPage = ( req, res, next ) =>
         {
             return next(err);
         }
+
         if(!student)
         {
             req.flash('loginMessage', 'Authentication Error');
-            return res.redirect('/views/sign_in');
+            return res.redirect('/sign_in');
         }
 
         req.login(student, (err) => 
@@ -84,7 +89,7 @@ module.exports.processLoginPage = ( req, res, next ) =>
                 return next(err);
             }
 
-            const payload = 
+            /*const payload = 
             {
                 id: user._id,
                 displayName: user.displayName,
@@ -95,9 +100,8 @@ module.exports.processLoginPage = ( req, res, next ) =>
             const authToken = jwt.sign(payload, DB.Secret, 
             {
                 expiresIn: 604800 // 1 week
-            });
-
-            return res.redirect(''); // need db
+            });*/
+            return res.redirect('account/account');
         })
     })(req, res, next);
 }

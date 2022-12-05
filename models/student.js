@@ -29,12 +29,13 @@ let Student = mongoose.Schema(
         trim: true,
         required: 'Email is required'
     },
+    /*
     Password: {
         type: String,
         default: '',
         trim: true,
         required: 'password is required'
-    },
+    },*/
     Stars: {
         type: Number,
         default: '',

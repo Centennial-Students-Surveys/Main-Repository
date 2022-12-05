@@ -17,11 +17,13 @@ router.get('/profrate', indexController.displayProfessors);
 router.get('/about', indexController.displayAboutPage);
 
 //Get Sign in Page through controller folder <>
-//router.get('/sign_in', indexController.displayLoginPage)//Fix once DB will work
-router.get('/sign_in', function(req, res, next)
+router.get('/sign_in', indexController.displayLoginPage);
+
+router.post('/sign_in', indexController.processLoginPage);
+/*router.get('/sign_in', function(req, res, next)
 {
   res.render('sign_in', {title: 'Settings' });
-});
+});*/
 
 //Route to user's settings from accout(only for authorized users)
 router.get('/settings', function(req, res, next)
@@ -30,10 +32,10 @@ router.get('/settings', function(req, res, next)
 });
 
 //Route to user's account
-router.get('/account', function(req,res, next)
-{
-  res.render('account/account', {title: 'Hello user <Name>'});
-});
+//router.get('/account', function(req,res, next)
+//{
+//  res.render('account/account', {title: 'Hello user <Name>'});
+//});
 
 //Route to sign up form(only for students)
 router.get('/signup',function(req,res,next)
