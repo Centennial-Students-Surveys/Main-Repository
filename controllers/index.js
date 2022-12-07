@@ -51,8 +51,7 @@ module.exports.displayAboutPage = (req,res, next) =>
 //Get Route to Sign in
 module.exports.displayLoginPage = (req,res, next) =>  
 {
-    //console.log(student);
-    if(!req.student)
+    if(!req.user)
     {
         res.render('sign_in',
         {
@@ -81,7 +80,7 @@ module.exports.processLoginPage = ( req, res, next ) =>
         if(!user)
         {
             req.flash('loginMessage', 'Authentication Error');
-            return res.redirect('/login');
+            return res.redirect('/sign_in');
         }
         req.login(user, (err) => {
             // server error?
@@ -102,7 +101,7 @@ module.exports.processLoginPage = ( req, res, next ) =>
                 expiresIn: 604800 // 1 week
             });*/
 
-            return res.redirect('account/account');
+            return res.redirect('/account-account');
         });
     })(req, res, next);
 }
@@ -111,13 +110,13 @@ module.exports.processLoginPage = ( req, res, next ) =>
 module.exports.displayRegisterPage = (req, res, next) => 
 {
     // check if the user is not already logged in
-    if(!req.student)
+    if(!req.user)
     {
         res.render('signup/signup',
         {
             title: 'Register',
             messages: req.flash('registerMessage'),
-            displayName: req.student ? req.student.displayName : ''
+            displayName: req.user ? req.user.displayName : ''
         });
     }
     else
@@ -130,14 +129,14 @@ module.exports.displayRegisterPage = (req, res, next) =>
 module.exports.processRegisterPage = (req, res, next) => 
 {
     //Needs to be add some details
-    let newStudent = new Student({
+    let newUser = new User({
         username: req.body.username,
         //password: req.body.password,
         email: req.body.email,
         displayName: req.body.displayName
     });
 
-    Student.register(newStudent, req.body.password, (student) => {
+    User.register(newUser, req.body.password, (err) => {
         if(err)
         {
             console.log("Error: Inserting New User");
@@ -149,7 +148,7 @@ module.exports.processRegisterPage = (req, res, next) =>
                 );
                 console.log('Error: User Already Exists!')
             }
-            return res.render('signup/signup',
+            return res.render('/signup',
             {
                 title: 'Sign Up',
                 messages: req.flash('signupMessage'),
@@ -160,7 +159,7 @@ module.exports.processRegisterPage = (req, res, next) =>
         {
             return passport.authenticate('local')(req, res, () => 
             {
-                res.redirect('account/account')
+                res.redirect('/account-account');
             });
         }
     });

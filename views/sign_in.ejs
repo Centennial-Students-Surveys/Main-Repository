@@ -20,23 +20,25 @@
     
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title %></p>
+<div class="container">
+      <div>
+        <form method="POST" autocomplete="off">
+          <label for="username">Username: </label>
+          <input type="text" id="username" placeholder="Enter username" name="username" required>
+          <br>
+          <label for="password">Password:</label>
+          <input type="password" placeholder="Enter password" id="password" name="password" required>
+          <br>
+          <input type="submit" class="button-24" value="Login">
+        </form>
+     </div>
+
     <div>
-      <form method="POST" autocomplete="off">
-        <label>Email:</label>
-        <input type="text" id="uemail" placeholder="Enter email" name="Email" required>
-        <br>
-        <label>Password:</label>
-        <input type="text" placeholder="Enter password" id="upass" name="Password" required>
-        <br>
-        <input type="submit" value="Login">
-      </form>
+      <button class="button-24" role="button"><a href="/signup">Sign up</a></button>
     </div>
-    <div>
-      <button><a href="/signup">Sign up</a></button>
-    </div>
+</div>
   </body>
 </html>
 

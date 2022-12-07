@@ -62,18 +62,18 @@ app.use(passport.session());
 
 //passport student config
 
-//create a Student model
-let studentModel = require('./models/student');
-let Student = studentModel.Student;
-
-//Serialize and deserialize
-passport.serializeUser(Student.serializeUser());
-passport.deserializeUser(Student.deserializeUser());
+//create a a User Authentication Strategy
+let userModel = require('./models/user');
+let User = userModel.User;
 
 //Auth.strategy
-passport.use(Student.createStrategy());
+passport.use(User.createStrategy());
 
-passport.use(strategy);
+//Serialize and deserialize
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+//passport.use(strategy);
 
 // routing
 app.use('/', indexRouter);
