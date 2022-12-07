@@ -23,6 +23,8 @@
     <h1><%= title %></h1>
     
     <p>Welcome to <%= title %></p>
+    <div class="container">
+
     <div>
       <form method="post" autocomplete="off">
         <label>Username:</label>
@@ -31,15 +33,69 @@
         <label>Password:</label>
         <input type="text" placeholder="Enter password" id="upass" name="password" required>
         <br>
-        <button type="submit">Log in</a></button>
+        <button class="button-24" role="button">Log in</a></button>
+
         </form>
     </div>
     <div>
-      <button><a href="/signup">Sign up</a></button>
+      <button class="button-24" role="button"><a href="/signup">Sign up</a></button>
+    </div>
     </div>
   </body>
 </html>
 
+
+
+
+<style>
+
+    .container{
+      background:#FFFFFF;
+      width:200px;
+      margin: 0 auto;
+      padding: 10px;
+      margin-top:50px;
+      box-shadow:0px 2px 7px 1px #aa9191;
+      border-radius: 25px;
+      }
+
+
+.button-24 {
+  background: black;
+  border: 1px solid #ffffff;
+  border-radius: 4.5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 12px;
+  font-weight: 60000;
+  line-height: 12px;
+  min-height: 30px;
+  outline: 0;
+  padding: 6px 7px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button-24:hover,
+.button-24:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #000000;
+}
+
+.button-24:active {
+  opacity: .5;
+}
+
+</style>
 <%- include partial/bottom_nav.ejs %>  
 
-<%- include partial/footer.ejs %>

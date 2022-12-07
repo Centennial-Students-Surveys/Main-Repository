@@ -1,7 +1,7 @@
 {
   "name": "centennial-feedbacks",
   "version": "0.0.0",
-  "private": true,
+  "private": true, 
   "scripts": {
     "start": "nodemon ./bin/www"
   },
