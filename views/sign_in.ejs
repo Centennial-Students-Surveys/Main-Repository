@@ -33,10 +33,25 @@
         <br>
 
     </div>
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title %></p>
+<div class="container">
+      <div>
+        <form method="POST" autocomplete="off">
+          <label for="username">Username: </label>
+          <input type="text" id="username" placeholder="Enter username" name="username" required>
+          <br>
+          <label for="password">Password:</label>
+          <input type="password" placeholder="Enter password" id="password" name="password" required>
+          <br>
+          <input type="submit" class="button-24" value="Login">
+        </form>
+     </div>
+
     <div>
-      <button class="button-24" role="button"><a href="/signup">Sign up</a></button>
+      <button><a href="/signup">Sign up</a></button>
     </div>
-    </div>
+</div>
   </body>
 </html>
 
