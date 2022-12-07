@@ -38,6 +38,6 @@ router.get('/settings', function(req, res, next)
 //Route to sign up form
 router.get('/signup', indexController.displayRegisterPage);
 //POST for sign up form(only for students)
-router.post('/sighup', indexController.processRegisterPage);
+router.post('/signup', indexController.processRegisterPage);
 
 module.exports = router;
