@@ -38,10 +38,7 @@ router.get('/settings', function(req, res, next)
 //});
 
 //Route to sign up form(only for students)
-router.get('/signup',function(req,res,next)
-{
-  res.render('signup/signup', {title: 'Registration Page'});
-});
+router.get('/signup', indexController.displayRegisterPage);
 
 /* GET home page. */
 //router.get('/', function(req, res, next)

@@ -5,16 +5,18 @@ let mongoose = require ('mongoose');
 //passport
 let passport = require('passport');
 
+// enable jwt
+//let jwt = require('jsonwebtoken');
 // jwt + DB 
 let DB = require('../config/db');
 
 //Student Model Instance 
 
-let studentModel = require('../models/student');
+let userModel = require('../models/user');
 //let professorModel = require ('../models/professor');
 //let anonymousModel = require ('../models/anonymous');
 
-let Student = studentModel.Student; 
+let User = userModel.User; // alias
 //let Professor = professorModel.Professor;
 //let AnonymousModel = anonymousModel.Anonymous;
 
@@ -54,9 +56,9 @@ module.exports.displayLoginPage = (req,res, next) =>
     {
         res.render('sign_in',
         {
-            title: "Login",
-            messages: req.flash('loginMessage')
-            //FirstName: req.student ? req.student.FirstName: ''//We have to do smt with user(student) soon....
+            title: 'Login',
+            messages: req.flash('loginMessage'),
+            displayName: req.user ? req.user.displayName : ''
         });
     }
     else
@@ -65,25 +67,24 @@ module.exports.displayLoginPage = (req,res, next) =>
     }
 }
 
-//Post Sign in to Account
+//Post Sign in into Account
 module.exports.processLoginPage = ( req, res, next ) => 
 {
-    passport.authenticate('local', 
-    (err, student, info ) => 
-    {
+    passport.authenticate('local',
+    (err, user, info) => {
+        // server err?
         if(err)
         {
             return next(err);
         }
-
-        if(!student)
+        // is there a user login error?
+        if(!user)
         {
             req.flash('loginMessage', 'Authentication Error');
-            return res.redirect('/sign_in');
+            return res.redirect('/login');
         }
-
-        req.login(student, (err) => 
-        {
+        req.login(user, (err) => {
+            // server error?
             if(err)
             {
                 return next(err);
@@ -97,12 +98,12 @@ module.exports.processLoginPage = ( req, res, next ) =>
                 email: user.email
             }
 
-            const authToken = jwt.sign(payload, DB.Secret, 
-            {
+            const authToken = jwt.sign(payload, DB.Secret, {
                 expiresIn: 604800 // 1 week
             });*/
+
             return res.redirect('account/account');
-        })
+        });
     })(req, res, next);
 }
 
@@ -159,7 +160,7 @@ module.exports.processRegisterPage = (req, res, next) =>
         {
             return passport.authenticate('local')(req, res, () => 
             {
-                res.redirect('') // need db
+                res.redirect('account/account')
             });
         }
     });
@@ -402,8 +403,3 @@ module.exports.processRegisterPage = (req, res, next) => {
         }
     });
 }*/
-
-module.exports.performLogout = (req, res, next) => {
-    req.logout();
-    res.redirect('/');
-}

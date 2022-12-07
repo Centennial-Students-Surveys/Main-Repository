@@ -2,6 +2,55 @@
 let mongoose = require('mongoose');
 let passportLocalMongoose = require('passport-local-mongoose');
 
+let User = mongoose.Schema
+(
+    {
+        username: 
+        {
+            type: String,
+            default: '',
+            trim: true,
+            required: 'username is required'
+        },
+        /*
+        password: 
+        {
+            type: String,
+            default: '';
+            trim: true,
+            required: 'password is required'
+        }
+        */
+       email: 
+       {
+            type: String,
+            default: '',
+            trim: true,
+            required: 'email address is required'
+       },
+       displayName: 
+       {
+            type: String,
+            default: '',
+            trim: true,
+            required: 'Display Name is required'
+       },
+       created: 
+       {
+            type: Date,
+            default: Date.now
+       },
+       update: 
+       {
+            type: Date,
+            default: Date.now
+       }
+    },
+    {
+        collection: "users"
+    }
+);
+/*
 let Student = mongoose.Schema(
 {
     //FirstName: String,
@@ -11,19 +60,22 @@ let Student = mongoose.Schema(
     //Stars: Number,
     //Feedback: String,
     //Department: String
-    FirstName: {
+    FirstName: 
+    {
         type: String,
         default: '',
         trim: true,
         required: 'First Name is required'
     },
-    LastName: {
+    LastName: 
+    {
         type: String,
         default: '',
         trim: true,
         required: 'Last Name is required'
     },
-    Email: {
+    Email: 
+    {
         type: String,
         default: '',
         trim: true,
@@ -35,29 +87,35 @@ let Student = mongoose.Schema(
         default: '',
         trim: true,
         required: 'password is required'
-    },*/
-    Stars: {
+    },
+    Stars: 
+    {
         type: Number,
         default: '',
         trim: true,
         required: 'Stars is required'
     },
-    Feedback: {
+    Feedback: 
+    {
         type: String,
         default: '',
         trim: true,
         required: 'Feedback is required'
     },
-    Department: {
+    Department: 
+    {
         type: String,
         default: '',
         trim: true,
         required: 'Department is required'
-    },
-}, 
+    }
+},
 {
-    collection: "students"
-});
+    collection: "student"
+}
+);
+*/
+
 
 // configure options for Students Model
 let options = ({ missingPasswordError: 'Wrong / Missing Password' });

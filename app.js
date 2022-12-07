@@ -9,6 +9,7 @@ var app = express();
 //modules for authentication 
 let session = require('express-session');
 let passport = require('passport');
+
 //let passport = require('./config/passport');
 let passportLocal = require('passport-local');
 let localStrategy = passportLocal.Strategy;
@@ -71,6 +72,8 @@ passport.deserializeUser(Student.deserializeUser());
 
 //Auth.strategy
 passport.use(Student.createStrategy());
+
+passport.use(strategy);
 
 // routing
 app.use('/', indexRouter);
