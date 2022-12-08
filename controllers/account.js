@@ -3,7 +3,7 @@ let router = express.Router();
 let mongoose = require('mongoose');
 
 // create a reference to the model
-//let Student = require('../models/student');
+let Feedbacks = require('../models/feedback');
 
 module.exports.displayStudAccount = (req,res, next) =>
 {

@@ -3,6 +3,7 @@ var router = express.Router();
 
 //Fetch the controllers
 let indexController = require('../controllers/index');
+let accountController = require('../controllers/account');
 
 //Get Home Page through controller folder <>
 router.get('/', indexController.displayHomePage);
@@ -30,6 +31,9 @@ router.post('/sign_in', indexController.processLoginPage);
 //{
 //  res.render('account/account', {title: 'Hello user <Name>'});
 //});
+
+//Test Route to retrive all feedbacks
+//router.get('/studfeeds', accountController.displayFeedbacks);
 
 //Route to sign up form
 router.get('/signup', indexController.displayRegisterPage);
