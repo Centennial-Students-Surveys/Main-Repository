@@ -1,6 +1,6 @@
-let express = require ('express');
+let express = require('express');
 let router = express.Router();
-let mongoose = require ('mongoose');
+let mongoose = require('mongoose');
 
 //passport
 let passport = require('passport');
@@ -19,110 +19,91 @@ let User = userModel.User; // alias
 
 //CONTROLLER ROUTES>>>>>>>>
 //HP route
-module.exports.displayHomePage = (req,res, next) =>
-{
-   res.render('index', {title: 'Home Page', displayName: req.user ? req.user.displayName : ''});
+module.exports.displayHomePage = (req, res, next) => {
+    res.render('index', { title: 'Home Page', displayName: req.user ? req.user.displayName : '' });
 }
 
 //Route to Student's feedbacks page
-module.exports.displayStudentFeedbacks = (req,res, next) =>
-{
-   res.render('studfeeds', {title: 'Student Feedbacks' });
+module.exports.displayStudentFeedbacks = (req, res, next) => {
+    res.render('studfeeds', { title: 'Student feedbacks' });
 }
 
 //Route to Professor's rate page
-module.exports.displayProfessors = (req,res, next) =>
-{
-   res.render('profrate', {title: 'Professors Rate' });
+module.exports.displayProfessors = (req, res, next) => {
+    res.render('profrate', { title: 'Professors rate page' });
 };
 
 //Route to About College info
-module.exports.displayAboutPage = (req,res, next) =>
-{
-   res.render('about', {title: 'About College' });
+module.exports.displayAboutPage = (req, res, next) => {
+    res.render('about', { title: 'About college page' });
 };
 
 //Route to account
 
 //Get Route to Sign in
-module.exports.displayLoginPage = (req,res, next) =>  
-{
-    if(!req.user)
-    {
-        res.render('sign_in',
-        {
+module.exports.displayLoginPage = (req, res, next) => {
+    if (!req.user) {
+        res.render('sign_in', {
             title: 'Login',
             messages: req.flash('loginMessage'),
             displayName: req.user ? req.user.displayName : ''
         });
-    }
-    else
-    {
+    } else {
         return res.redirect('/');
     }
 }
 
 //Post Sign in into Account
-module.exports.processLoginPage = ( req, res, next ) => 
-{
+module.exports.processLoginPage = (req, res, next) => {
     passport.authenticate('local',
-    (err, user, info) => {
-        // server err?
-        if(err)
-        {
-            return next(err);
-        }
-        // is there a user login error?
-        if(!user)
-        {
-            req.flash('loginMessage', 'Authentication Error');
-            return res.redirect('/sign_in');
-        }
-        req.login(user, (err) => {
-            // server error?
-            if(err)
-            {
+        (err, user, info) => {
+            // server err?
+            if (err) {
                 return next(err);
             }
-
-            /*const payload = 
-            {
-                id: user._id,
-                displayName: user.displayName,
-                username: user.username,
-                email: user.email
+            // is there a user login error?
+            if (!user) {
+                req.flash('loginMessage', 'Authentication Error');
+                return res.redirect('/sign_in');
             }
+            req.login(user, (err) => {
+                // server error?
+                if (err) {
+                    return next(err);
+                }
 
-            const authToken = jwt.sign(payload, DB.Secret, {
-                expiresIn: 604800 // 1 week
-            });*/
-            return res.redirect('/account-account');
-        });
-    })(req, res, next);
+                /*const payload = 
+                {
+                    id: user._id,
+                    displayName: user.displayName,
+                    username: user.username,
+                    email: user.email
+                }
+
+                const authToken = jwt.sign(payload, DB.Secret, {
+                    expiresIn: 604800 // 1 week
+                });*/
+                return res.redirect('/account-account');
+            });
+        })(req, res, next);
 }
 
 
-module.exports.displayRegisterPage = (req, res, next) => 
-{
+module.exports.displayRegisterPage = (req, res, next) => {
     // check if the user is not already logged in
-    if(!req.user)
-    {
-        res.render('signup/signup',
-        {
+    if (!req.user) {
+        res.render('signup/signup', {
             title: 'Register',
             messages: req.flash('registerMessage'),
             displayName: req.user ? req.user.displayName : ''
         });
-    }
-    else
-    {
+    } else {
         return res.redirect('/');
     }
 }
 
 
-module.exports.processRegisterPage = (req, res, next) => 
-{
+module.exports.processRegisterPage = (req, res, next) => {
     //Needs to be add some details
     let newUser = new User({
         username: req.body.username,
@@ -132,28 +113,22 @@ module.exports.processRegisterPage = (req, res, next) =>
     });
 
     User.register(newUser, req.body.password, (err) => {
-        if(err)
-        {
+        if (err) {
             console.log("Error: Inserting New User");
-            if(err.name == "UserExistsError")
-            {
+            if (err.name == "UserExistsError") {
                 req.flash(
                     'registerMessage',
                     'Registration Error: User Already Exists!'
                 );
                 console.log('Error: User Already Exists!')
             }
-            return res.render('signup/signup',
-            {
+            return res.render('signup/signup', {
                 title: 'Sign Up',
                 messages: req.flash('signupMessage'),
                 displayName: req.user ? req.user.displayName : ''
             });
-        }
-        else
-        {
-            return passport.authenticate('local')(req, res, () => 
-            {
+        } else {
+            return passport.authenticate('local')(req, res, () => {
                 res.redirect('/account-account');
             });
         }
@@ -161,8 +136,9 @@ module.exports.processRegisterPage = (req, res, next) =>
 }
 
 
-module.exports.performLogout = (req, res, next) => 
-{
-    req.logout();
-    res.redirect('/');
+module.exports.performLogout = (req, res, next) => {
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+    });
 }
