@@ -21,7 +21,7 @@ let User = userModel.User; // alias
 //HP route
 module.exports.displayHomePage = (req,res, next) =>
 {
-   res.render('index', {title: 'Home Page' });
+   res.render('index', {title: 'Home Page', displayName: req.user ? req.user.displayName : ''});
 }
 
 //Route to Student's feedbacks page

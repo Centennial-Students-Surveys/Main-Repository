@@ -8,4 +8,11 @@ let mongoose = require('mongoose');
 module.exports.displayStudAccount = (req,res, next) =>
 {
     res.render('account/account', {title: 'Account',displayName: req.user ? req.user.displayName : '' });
+    //res.render('index', {title: 'Account',displayName: req.user ? req.user.displayName : '' });
+}
+
+module.exports.displayStudSettings = (req,res, next) =>
+{
+    res.render('account/settings', {title: 'Settings',displayName: req.user ? req.user.displayName : '' });
+    //res.render('index', {title: 'Account',displayName: req.user ? req.user.displayName : '' });
 }
