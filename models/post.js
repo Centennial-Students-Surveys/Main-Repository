@@ -1,6 +1,6 @@
 let mongoose = require('mongoose');
 
-let postModel = mongoose.Schema(
+let feedbackModel = mongoose.Schema(
 {
     UserId: Number,
     FirstName: String,
@@ -10,7 +10,7 @@ let postModel = mongoose.Schema(
     Comments: Array
 },
 {
-    collection: "posts"
+    collection: "feedbacks"
 });
 
-module.exports = mongoose.model('Posts', postModel);
+module.exports = mongoose.model('Feedbacks', feedbackModel);

@@ -12,40 +12,38 @@
   <body>
     <h1><%= title %></h1>
     
-    
-    <div> logged in user:<%= displayName %></div>
-    
-  <% if(typeof displayName == 'string' && displayName) {%>
-    <p>Welcome to <%= title %></p>
-    <p>FORM FOR FEEDBACK</p>
-  <div>
-    <form method="POST" autocomplete="off">
-        <label for="fname">Your First name: </label>
-        <input type="text" id="fname" placeholder="First name" name="fname" required>
-        <br>
-        <br>
-        <label for="lname">Your Last name: </label>
-        <input type="text" id="lname" placeholder="Last name" name="lname" required>
-        <br>
-        <br>
-        <label for="feedback">Your feedback: </label>
-        <input type="text" id="feedback" placeholder="Enter your feedback" name="feedback" required>
-        <br>
-        <br>
-        <label for="stars">Stars:</label>
-        <input type="number" placeholder="Enter password" id="stars" name="stars" required>
-        <br>
-        <br>
-        <input type="submit" class="button-24" value="Submit Feedback">
-        <a href="/settings"><!---->
-          <input type="button" class="button-24" value="Settings">
-        </a>
-    </form>
-  </div>
-    <button><a href="/sign_in">Log Out</a></button>
-    <% } else { %>
-      <div>Please register or sign in</div>
-      <% } %>
+    <% if(typeof displayName == 'string' && displayName) {%>
+      <div> logged in user:<%= displayName %></div>
+      <p>Welcome to <%= title %></p>
+      <p>FORM FOR FEEDBACK</p>
+    <div>
+      <form method="POST" autocomplete="off">
+          <label for="fname">Your First name: </label>
+          <input type="text" id="fname" placeholder="First name" name="fname" required>
+          <br>
+          <br>
+          <label for="lname">Your Last name: </label>
+          <input type="text" id="lname" placeholder="Last name" name="lname" required>
+          <br>
+          <br>
+          <label for="feedback">Your feedback: </label>
+          <input type="text" id="feedback" placeholder="Enter your feedback" name="feedback" required>
+          <br>
+          <br>
+          <label for="stars">Stars:</label>
+          <input type="number" placeholder="Enter password" id="stars" name="stars" required>
+          <br>
+          <br>
+          <input type="submit" class="button-24" value="Submit Feedback">
+          <a href="/settings"><!---->
+            <input type="button" class="button-24" value="Settings">
+          </a>
+      </form>
+    </div>
+      <button><a href="/sign_in">Log Out</a></button>
+      <% } else { %>
+        <h2>Please Log in into your Account</h2>
+        <% } %>
   </body>
 </html>
 
