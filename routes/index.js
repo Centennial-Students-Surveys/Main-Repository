@@ -36,4 +36,8 @@ router.get('/signup', indexController.displayRegisterPage);
 //POST for sign up form(only for students)
 router.post('/signup', indexController.processRegisterPage);
 
+// <---For "log-out" Maksat edit--->
+router.get('/logout', indexController.performLogout);
+
+
 module.exports = router;
