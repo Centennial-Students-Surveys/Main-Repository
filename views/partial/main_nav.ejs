@@ -54,5 +54,13 @@
             <li class="nav-item"><a href="/sign_in" class="nav-link">
               <i class="fas fa-lg fa-sign-in-alt"></i> Sign in</a></li>
           <% } %>
+
+          <% if (title == "Account") { %><!--For Account Item-->
+            <li class="nav-item active">
+            <% } else  { %>
+            <li class="nav-item">
+            <% } %>
+              <a class="nav-link" href="/account-account"><i class="fas fa-info-circle"></i> Account</a>
+            </li>
     </div>
 </nav>

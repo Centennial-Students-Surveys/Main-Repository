@@ -22,10 +22,6 @@ router.get('/sign_in', indexController.displayLoginPage);
 router.post('/sign_in', indexController.processLoginPage);
 
 //Route to user's settings from accout(only for authorized users)
-router.get('/settings', function(req, res, next)
-{
-  res.render('settings/settings', {title: 'Settings' });
-});
 
 //router.get('/account', indexController.dos;
 

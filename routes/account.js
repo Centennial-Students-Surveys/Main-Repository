@@ -6,8 +6,12 @@ let passport = require('passport');
 
 let accountController = require('../controllers/account');
 
-/* GET Route for the Book List page - READ Operation */
+//Route to Student's account
 router.get('/', accountController.displayStudAccount);
+//the post also needed
+
+//Route to Student's settings
+router.get('/settings', accountController.displayStudSettings);
 
 
 module.exports = router;
