@@ -22,7 +22,6 @@
   <body>
 
   <h1><%= title %></h1>
-  <p>Welcome to <%= title %></p>
 <div class="container">
       <div>
         <form method="POST" autocomplete="off">
@@ -32,12 +31,13 @@
           <label for="password">Password:</label>
           <input type="password" placeholder="Enter password" id="password" name="password" required>
           <br>
+          <p></p>
           <input type="submit" class="button-24" value="Login">
         </form>
      </div>
 
     <div>
-      <button><a href="/signup">Sign up</a></button>
+      <button class="button-24"><a href="/signup">Sign up</a></button>
     </div>
 </div>
   </body>
@@ -50,14 +50,18 @@
 
     .container{
       background:#FFFFFF;
-      width:200px;
+      width:250px;
       margin: 0 auto;
-      padding: 10px;
+      padding: 20px;
       margin-top:50px;
       box-shadow:0px 2px 7px 1px #aa9191;
       border-radius: 25px;
       }
 
+h1{
+  color: white;
+  text-align: center;
+}
 
 .button-24 {
   background: black;
@@ -89,10 +93,14 @@
   background-color: initial;
   background-position: 0 0;
   color: #000000;
+  text-decoration: none;
+
 }
 
 .button-24:active {
   opacity: .5;
+  text-decoration: none;
+
 }
 
 </style>
