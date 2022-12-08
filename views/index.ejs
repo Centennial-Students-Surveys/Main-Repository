@@ -12,15 +12,35 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <!--main content-->
-<main class="container">
-  <div class="jumbotron">
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  
+    <h1><%= title %></h1>
+
     
-    <link rel='stylesheet' href='/stylesheets/style.css'>
-    <h1 class="display-4">Welcome to <%= title %></h1>
-  </div>
-</main>
+      
+    <style>
+h1{
+  color: white;
+  text-align: center;
+}
 
 
+    </style> 
+
+
+
+
+    </body>
+    </html>
 <%- include partial/bottom_nav.ejs %>  
 
 <%- include partial/footer.ejs %>

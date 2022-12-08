@@ -27,19 +27,19 @@ module.exports.displayHomePage = (req,res, next) =>
 //Route to Student's feedbacks page
 module.exports.displayStudentFeedbacks = (req,res, next) =>
 {
-   res.render('studfeeds', {title: 'Student feedbacks' });
+   res.render('studfeeds', {title: 'Student Feedbacks' });
 }
 
 //Route to Professor's rate page
 module.exports.displayProfessors = (req,res, next) =>
 {
-   res.render('profrate', {title: 'Professors rate page' });
+   res.render('profrate', {title: 'Professors Rate' });
 };
 
 //Route to About College info
 module.exports.displayAboutPage = (req,res, next) =>
 {
-   res.render('about', {title: 'About college page' });
+   res.render('about', {title: 'About College' });
 };
 
 //Route to account

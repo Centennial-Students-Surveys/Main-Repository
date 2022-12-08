@@ -8,17 +8,31 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="icon" href="/images/feedback.png">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    
   </head>
   <body>
+
+
+
+
     <h1><%= title %></h1>
     
     
-    <div> logged in user:<%= displayName %></div>
-    
+  
+  <div class="container">
   <% if(typeof displayName == 'string' && displayName) {%>
-    <p>Welcome to <%= title %></p>
     <p>FORM FOR FEEDBACK</p>
-  <div>
+  
     <form method="POST" autocomplete="off">
         <label for="fname">Your First name: </label>
         <input type="text" id="fname" placeholder="First name" name="fname" required>
@@ -36,16 +50,96 @@
         <input type="number" placeholder="Enter password" id="stars" name="stars" required>
         <br>
         <br>
+
+
+
+
+        
         <input type="submit" class="button-24" value="Submit Feedback">
-        <a href="/settings"><!---->
+
+        
+        <a href="/settings">
           <input type="button" class="button-24" value="Settings">
         </a>
     </form>
-  </div>
-    <button><a href="/sign_in">Log Out</a></button>
+  
+    <button class="button-24"><a href="/sign_in">Log Out</a></button>
     <% } else { %>
-      <div>Please register or sign in</div>
+      <div class="warning">Please register or sign in!</div>
       <% } %>
+
+  </div>
+
+  <style>
+.container{
+  margin-top:50px;
+  padding: 25px;
+  background-color: #fff;
+  height: 350px;
+  border-radius: 25px;
+  width: 500px;
+}
+
+.warning{
+  padding: 115;
+  text-transform: capitalize;
+font-size: large;
+}
+
+h1{
+  color: white;
+  text-align: center;
+}
+label{
+    display: inline-block;
+    width: 250px;
+    text-align: left; /*Change to right here if you want it close to the inputs*/
+}
+input {
+  display: inline-block;
+}
+
+.button-24 {
+  background: black;
+  border: 1px solid #ffffff;
+  border-radius: 4.5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 12px;
+  font-weight: 60000;
+  line-height: 12px;
+  min-height: 30px;
+  outline: 0;
+  padding: 6px 7px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button-24:hover,
+.button-24:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #000000;
+  text-decoration: none;
+
+}
+
+.button-24:active {
+  opacity: .5;
+  text-decoration: none;
+
+}
+
+  </style>
   </body>
 </html>
 

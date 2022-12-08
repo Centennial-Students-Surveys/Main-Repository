@@ -4,16 +4,17 @@
     <link rel="icon" href="/images/feedback.png">
 </head>
   <body>
+
+    <div class="container">
     <h1><%= title %></h1>
     
-    <p>Welcome to <%= title %></p>
 
     <form method="POST" autocomplete="off">
-      <label for="username">Username:</label>
+      <label for="username">Username: </label>
       <input type="text" id="username" placeholder="Enter username" name="username" required>
       <br>
       <br>
-      <label for="password">Password:</label>
+      <label for="password">Password: </label>
       <input type="password" placeholder="Enter password" id="password" name="password" required>
       <br>
       <br>
@@ -21,12 +22,40 @@
       <input type="email" name="email" id="email" placeholder="Enter Email Address" required>
       <br>
       <br>
-      <label for="displayName">Display Name:</label>
+      <label for="displayName">Display Name: </label>
       <input type="text" name="displayName" placeholder="Enter Display Name" id="displayName" required>
       <br>
       <br>
       <input type="submit" class="button-24" value="Submit">
       <a href="/sign_in"><input type="button" value="Cancel"></a>
     </form>
+</div>
+
+<style>
+  .container{
+  margin-left: 300px;
+  margin-top:120px;
+  padding: 25px;
+  background-color: #fff;
+  height: 250px;
+  border-radius: 25px;
+  width: 500px;
+  padding-left: 125px;
+}
+
+label{
+    display: inline-block;
+    float: left;
+    width: 250px;
+    text-align: left; /*Change to right here if you want it close to the inputs*/
+}
+input {
+  display: inline-block;
+  float: left;
+}
+
+</style>
+
+
   </body>
 </html>
