@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title><%- title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="icon" href="/images/feedback.png">
-  </head>
-  <body>
+</head>
+<body>
     <h1><%= title %></h1>
-    
+  
     <p>Welcome to <%= title %></p>
 
+  <form method="POST">
+    <label>Change First Name:</label>
+    <input type="text" name="FirstName" required>
+    <br>
+    <label>Change Last Name:</label>
+    <input type="password" name="LastName" required>
+    <br>
+    <input type="submit" placeholder="Save Changes">
+  </form>
+  <br>
+    <button><a href="account-account">Cancel</a></button>
 
-    <p>Settings</p>
-
-    <p>Change Username</p>
-    <p>Change Password</p>
-
-    <button><a href="/account">Cancel</a></button>
-    
-  </body>
+</body>
 </html>

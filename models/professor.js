@@ -3,14 +3,14 @@ let mongoose = require('mongoose');
 
 let Professor = mongoose.Schema(
 {
-    Firstname: String,
+    FirstName: String,
     LastName:  String,
     StarsSkills: Number,
     StarsComplexity: Number,
     Department: String
 }, 
 {
-    collection: "professors"
+    collection: "professor"
 });
 
 module.exports = mongoose.model('Professor', Professor);
