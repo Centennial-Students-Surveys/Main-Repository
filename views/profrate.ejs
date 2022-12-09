@@ -9,6 +9,9 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" type="text/css" href="style.css">
 
+    <!--For feedbacks table style-->
+    <link rel='stylesheet' href='/stylesheets/studfeeds.css' />
+
   </head>
   <body>
     <h1><%= title %></h1>
@@ -144,6 +147,37 @@
 
 </div>
 
+<!--//////////////////////////////////////////////////// Retrieving Students Feedbacks-->
+<div id="servcont">
+  <div id="dexper">
+      <h1 id="hexper">Feedbacks:</h1>
+  </div>
+  <div id="inserv">
+   <table class="mtable">
+       <thead>
+           <tr>
+               <th>FirstName</th>
+               <th>LastName</th>
+               <th>Feedback</th>
+               <th>Stars</th>
+               <th>Comments</th>
+           </tr>
+       </thead>
+           <tbody>
+               <% for (let count = 0; count < Professors.length; count++) { %>
+                   <tr>
+                      <td><%= Professors[count].FirstName %></td>
+                      <td><%= Professors[count].LastName %></td>
+                      <td><%= Professors[count].StarsSkills %></td>
+                      <td><%= Professors[count].StarsComplexity %></td>
+                      <td><%= Professors[count].Department %></td>
+                   </tr>
+               <% } %>
+           </tbody>
+      </table>
+  </div>
+</div>   
+<!--////////////////////////////////////////////////////-->
 
 
 
