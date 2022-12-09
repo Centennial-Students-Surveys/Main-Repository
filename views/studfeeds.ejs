@@ -27,69 +27,55 @@
   <body>
     <h1><%= title %></h1>
     
-    <table class="table table-striped table-hover rounded-circle">
-      <!-- Header Row-->
-      <tr class="d-flex">
-          <th class="text-center col-3">Professor</th>
-          <th class="text-center col-3">Overall Rating</th>
-          <th class="text-center col-5">Comments</th>
-          <th class="text-center col-1">Price</th>
-      </tr>
-      
-
-      <!-- Repeatable Template Row -->
-
-
-  </table>
-
 <!--//////////////////////////////////////////////////// Retrieving Students Feedbacks-->
-  <div id="servcont">
-    <div id="dexper">
-        <h1 id="hexper">Feedbacks:</h1>
-    </div>
-    <div id="inserv">
-     <table class="mtable">
-         <thead>
-             <tr>
-                 <th>FirstName</th>
-                 <th>LastName</th>
-                 <th>Feedback</th>
-                 <th>Stars</th>
-                 <th>Comments</th>
+  <div class="container-fluid">
+     <table class="table table-hover rounded-circle ">
+             <tr class="d-flex">
+                 <th class="text-center col-3">FirstName</th>
+                 <th class="text-center col-3">LastName</th>
+                 <th class="text-center col-1">Stars</th>
+                 <th class="text-center col-5">Comments</th>
              </tr>
-         </thead>
-             <tbody>
                  <% for (let count = 0; count < Feedbacks.length; count++) { %>
-                     <tr>
-                        <td><%= Feedbacks[count].FirstName %></td>
-                        <td><%= Feedbacks[count].LastName %></td>
-                        <td><%= Feedbacks[count].Feedback %></td>
-                        <td><%= Feedbacks[count].Stars %></td>
-                        <td><%= Feedbacks[count].Comments %></td>
+
                      </tr>
                  <% } %>
-             </tbody>
         </table>
-    </div>
-</div>   
+  </div>
 <!--////////////////////////////////////////////////////-->
 
 
 <style>
 
+.container-fluid{
+  background-color: #fff;
+  border-radius: 25px;
+  padding-left: 75px;
+  padding-top:30px;
+  padding-bottom: 15px;
+}
 .d-flex{
   border-radius: 25px;
   overflow: hidden;
-  margin-top:20px;
 
 }
 h1{
   color: white;
   text-align: center;
+  padding-bottom: 20px;
+}
+.table{
+    background-color: white;
+    
 }
 
+th{
+color:black
+}
 
-
+td{
+color:black
+}
 </style>
 
   </body>
