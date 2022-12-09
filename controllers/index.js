@@ -22,7 +22,7 @@ let User = userModel.User; // alias
 //CONTROLLER ROUTES>>>>>>>>
 //HP route
 module.exports.displayHomePage = (req, res, next) => {
-    res.render('home', { title: 'Home', displayName: req.user ? req.user.displayName : '' });
+    res.render('index', { title: 'Home', displayName: req.user ? req.user.displayName : '' });
 }
 
 //Route to Student's feedbacks page
