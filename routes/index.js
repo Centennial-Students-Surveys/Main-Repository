@@ -6,7 +6,7 @@ let indexController = require('../controllers/index');
 let accountController = require('../controllers/account');
 
 //Get Home Page through controller folder <>
-router.get('/', indexController.displayHomePage);
+router.get('/home', indexController.displayHomePage);
 
 //Get Student's feedbacks through controller folder <>
 router.get('/studfeeds', indexController.displayStudentFeedbacks)

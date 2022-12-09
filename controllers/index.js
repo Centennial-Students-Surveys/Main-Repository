@@ -20,9 +20,8 @@ let User = userModel.User; // alias
 
 //CONTROLLER ROUTES>>>>>>>>
 //HP route
-module.exports.displayHomePage = (req, res, next) => 
-{
-    res.render('index', { title: 'Home Page', displayName: req.user ? req.user.displayName : '' });
+module.exports.displayHomePage = (req, res, next) => {
+    res.render('home', { title: 'Home', displayName: req.user ? req.user.displayName : '' });
 }
 
 //Route to Student's feedbacks page
@@ -32,41 +31,32 @@ module.exports.displayHomePage = (req, res, next) =>
 //}
 
 //Updated Route to Student's feedbacks page
-module.exports.displayStudentFeedbacks = (req, res, next) => 
-{
-    feedbacksModel.find((err, feedbacks) => 
-    {
-        if(err)
-        {
+module.exports.displayStudentFeedbacks = (req, res, next) => {
+    feedbacksModel.find((err, feedbacks) => {
+        if (err) {
             return console.error(err);
-        }
-        else
-        {
-            res.render('studfeeds', {title: 'Student Feedbacks', Feedbacks: feedbacks, displayName: req.user ? req.user.displayName : ''});  
+        } else {
+            res.render('studfeeds', { title: 'Student Feedbacks', Feedbacks: feedbacks, displayName: req.user ? req.user.displayName : '' });
         }
     });
 }
 
 //Route to Professor's rate page
-module.exports.displayProfessors = (req, res, next) => 
-{
+module.exports.displayProfessors = (req, res, next) => {
     res.render('profrate', { title: 'Professors rate page' });
 };
 
 //Route to About College info
-module.exports.displayAboutPage = (req, res, next) => 
-{
+module.exports.displayAboutPage = (req, res, next) => {
     res.render('about', { title: 'About college page' });
 };
 
 //Route to account
 
 //Get Route to Sign in
-module.exports.displayLoginPage = (req, res, next) => 
-{
+module.exports.displayLoginPage = (req, res, next) => {
     if (!req.user) {
-        res.render('sign_in', 
-        {
+        res.render('sign_in', {
             title: 'Login',
             messages: req.flash('loginMessage'),
             displayName: req.user ? req.user.displayName : ''
@@ -77,23 +67,19 @@ module.exports.displayLoginPage = (req, res, next) =>
 }
 
 //Post Sign in into Account
-module.exports.processLoginPage = (req, res, next) => 
-{
+module.exports.processLoginPage = (req, res, next) => {
     passport.authenticate('local',
         (err, user, info) => {
             // server err?
-            if (err) 
-            {
+            if (err) {
                 return next(err);
             }
             // is there a user login error?
-            if (!user) 
-            {
+            if (!user) {
                 req.flash('loginMessage', 'Authentication Error');
                 return res.redirect('/sign_in');
             }
-            req.login(user, (err) => 
-            {
+            req.login(user, (err) => {
                 // server error?
                 if (err) {
                     return next(err);
@@ -116,12 +102,10 @@ module.exports.processLoginPage = (req, res, next) =>
 }
 
 
-module.exports.displayRegisterPage = (req, res, next) => 
-{
+module.exports.displayRegisterPage = (req, res, next) => {
     // check if the user is not already logged in
     if (!req.user) {
-        res.render('signup/signup', 
-        {
+        res.render('signup/signup', {
             title: 'Register',
             messages: req.flash('registerMessage'),
             displayName: req.user ? req.user.displayName : ''
@@ -132,8 +116,7 @@ module.exports.displayRegisterPage = (req, res, next) =>
 }
 
 
-module.exports.processRegisterPage = (req, res, next) => 
-{
+module.exports.processRegisterPage = (req, res, next) => {
     //Needs to be add some details
     let newUser = new User({
         username: req.body.username,
@@ -143,8 +126,7 @@ module.exports.processRegisterPage = (req, res, next) =>
     });
 
     User.register(newUser, req.body.password, (err) => {
-        if (err) 
-        {
+        if (err) {
             console.log("Error: Inserting New User");
             if (err.name == "UserExistsError") {
                 req.flash(
@@ -167,13 +149,10 @@ module.exports.processRegisterPage = (req, res, next) =>
 }
 
 
-module.exports.performLogout = (req, res, next) => 
-{
-    req.logout(function(err)
-    {
-        if (err) 
-        { 
-            return next(err); 
+module.exports.performLogout = (req, res, next) => {
+    req.logout(function(err) {
+        if (err) {
+            return next(err);
         }
         res.redirect('/');
     });
