@@ -42,7 +42,22 @@ module.exports.displayStudentFeedbacks = (req, res, next) => {
     });
 }
 
-
+//Retrieve all Professor's rate page
+module.exports.displayProfessors = (req, res, next) => 
+{
+    //res.render('profrate', { title: 'Professors rate page' });
+    profmodel.find((err, professor) => 
+    {
+        if(err)
+        {
+            return console.error(err);
+        }
+        else
+        {
+            res.render('profrate', {title: 'Professors rate', Professors: professor, displayName: req.user ? req.user.displayName : ''});  
+        }
+    });
+};
 
 //Route to About College info
 module.exports.displayAboutPage = (req, res, next) => {

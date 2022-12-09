@@ -42,10 +42,15 @@
                  <th class="text-center col-1">Stars</th>
                  <th class="text-center col-5">Comments</th>
              </tr>
-                 <% for (let count = 0; count < Feedbacks.length; count++) { %>
-
-                     </tr>
-                 <% } %>
+             <% for (let count = 0; count < Feedbacks.length; count++) { %>
+              <tr>
+                 <td><%= Feedbacks[count].FirstName %></td>
+                 <td><%= Feedbacks[count].LastName %></td>
+                 <td><%= Feedbacks[count].Feedback %></td>
+                 <td><%= Feedbacks[count].Stars %></td>
+                 <td><%= Feedbacks[count].Comments %></td>
+              </tr>
+          <% } %>
         </table>
   </div>
 <!--////////////////////////////////////////////////////-->
