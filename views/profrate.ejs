@@ -35,10 +35,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-<div class="container">
+<div class="float-container">
+  <div class="name">
 <h3>Rate the Professor</h3>
-<p>Give a rating for Skill</p>
+<br>
+</div>
 
+
+<div class="float-child">
+  <p>Give a rating for Skill</p>
 
 <form class="rating">
   <label>
@@ -144,10 +149,38 @@
     <span class="icon">★</span>
   </label>
 </form>
-
 </div>
 
-<!--//////////////////////////////////////////////////// Retrieving Students Feedbacks-->
+<div class="float-child">
+  <form method="POST" autocomplete="off">
+    <label for="fname">First name: </label>
+    <input type="text" id="fname" placeholder="Enter first name" name="fname" required>
+    <br>
+    <br>
+    <label for="lname">Last Name: </label>
+    <input type="lname" id="lname" placeholder="Enter Last name" name="lname"  required>
+    <br>
+    <br>
+    <label for="Feedback">Feedback: </label>
+    <textarea id="Feedback" placeholder="Enter your feedback" name="Feedback" required></textarea>
+    <br>
+    <br>
+    <label for="Comments">Comments: </label>
+    <textarea id="Comments" placeholder="Enter your comments" name="v" required></textarea>
+    <br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="button-24" value="Submit">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/sign_in"><input type="button" class="button-24" value="Cancel"></a>
+  </form>
+</div>
+  </div>
+
+
+
+
+
+
+<!--//////////////////////////////////////////////////// Retrieving Students Feedbacks
 <div id="servcont">
   <div id="dexper">
       <h1 id="hexper">Feedbacks:</h1>
@@ -184,18 +217,33 @@
 
 <style>
 
-.container{
+
+
+.float-container {
   background-color: #fff;
-  height: 450px;
   border-radius: 25px;
   width: 500px;
-  padding-left: 125px;
-  margin-top:50px;
+  margin-left: 430px;
+  height: 500px;
 
 }
 
+.float-child {
+    height:350px;
+    width: 50%;
+    float: left;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 25px;
+
+}  
+
 h1{
   color: white;
+  text-align: center;
+}
+.name{
+  color: black;
   text-align: center;
 }
   .rating {
@@ -265,6 +313,48 @@ h1{
 }
 
 
+
+
+
+.button-24 {
+  background: black;
+  border: 1px solid #ffffff;
+  border-radius: 4.5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 12px;
+  font-weight: 60000;
+  line-height: 12px;
+  min-height: 30px;
+  outline: 0;
+  padding: 6px 7px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button-24:hover,
+.button-24:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #000000;
+  text-decoration: none;
+
+}
+
+.button-24:active {
+  opacity: .5;
+  text-decoration: none;
+
+}
 </style>
 
 
@@ -277,11 +367,10 @@ $(':radio').change(function() {
 
     
 
-  </body>
+</body>
 </html>
 
 <%- include partial/bottom_nav.ejs %>  
-
 
 
 

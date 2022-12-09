@@ -39,16 +39,17 @@
              <tr class="d-flex">
                  <th class="text-center col-3">FirstName</th>
                  <th class="text-center col-3">LastName</th>
+                 <th class="text-center col-2">Feedback</th>
                  <th class="text-center col-1">Stars</th>
-                 <th class="text-center col-5">Comments</th>
+                 <th class="text-center col-3">Comments</th>
              </tr>
              <% for (let count = 0; count < Feedbacks.length; count++) { %>
-              <tr>
-                 <td><%= Feedbacks[count].FirstName %></td>
-                 <td><%= Feedbacks[count].LastName %></td>
-                 <td><%= Feedbacks[count].Feedback %></td>
-                 <td><%= Feedbacks[count].Stars %></td>
-                 <td><%= Feedbacks[count].Comments %></td>
+              <tr class="d-flex">
+                 <td class="text-center col-3"><%= Feedbacks[count].FirstName %></td>
+                 <td class="text-center col-3"><%= Feedbacks[count].LastName %></td>
+                 <td class="text-center col-2"><%= Feedbacks[count].Feedback %></td>
+                 <td class="text-center col-1"><%= Feedbacks[count].Stars %></td>
+                 <td class="text-center col-3"><%= Feedbacks[count].Comments %></td>
               </tr>
           <% } %>
         </table>
