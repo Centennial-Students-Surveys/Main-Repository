@@ -23,17 +23,10 @@ router.get('/sign_in', indexController.displayLoginPage);
 router.post('/sign_in', indexController.processLoginPage);
 
 //Route to user's settings from accout(only for authorized users)
+//Route to Student's settings
+//router.get('/settings', accountController.displayStudSettings);
 
-//router.get('/account', indexController.dos;
-
-//Route to user's account
-//router.get('/account', function(req,res, next)
-//{
-//  res.render('account/account', {title: 'Hello user <Name>'});
-//});
-
-//Test Route to retrive all feedbacks
-//router.get('/studfeeds', accountController.displayFeedbacks);
+//router.post('/settings/:id', accountController.displayStudSettings);
 
 //Route to sign up form
 router.get('/signup', indexController.displayRegisterPage);
