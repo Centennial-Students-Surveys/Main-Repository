@@ -8,6 +8,7 @@
   <head>
     <title><%= title %></title>
 
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
     <link rel='stylesheet' href='/stylesheets/style.css' />
 
@@ -37,18 +38,18 @@
   <div class="container-fluid">
      <table class="table table-hover rounded-circle ">
              <tr class="d-flex">
-                 <th class="text-center col-3">First Name</th>
-                 <th class="text-center col-3">Last Name</th>
-                 <th class="text-center col-2">Feedback</th>
-                 <th class="text-center col-1">Stars</th>
+                 <th class="text-center col-2">First Name</th>
+                 <th class="text-center col-2">Last Name</th>
+                 <th class="text-center col-3">Feedback</th>
+                 <th class="text-center col-2">Stars</th>
                  <th class="text-center col-3">Comments</th>
              </tr>
              <% for (let count = 0; count < Feedbacks.length; count++) { %>
               <tr class="d-flex">
-                 <td class="text-center col-3"><%= Feedbacks[count].FirstName %></td>
-                 <td class="text-center col-3"><%= Feedbacks[count].LastName %></td>
-                 <td class="text-center col-2"><%= Feedbacks[count].Feedback %></td>
-                 <td class="text-center col-1"><%= Feedbacks[count].Stars %></td>
+                 <td class="text-center col-2"><%= Feedbacks[count].FirstName %></td>
+                 <td class="text-center col-2"><%= Feedbacks[count].LastName %></td>
+                 <td class="text-center col-3"><%= Feedbacks[count].Feedback %></td>
+                 <td class="text-center col-2" span id=stars><%= Feedbacks[count].Stars %></td>
                  <td class="text-center col-3"><%= Feedbacks[count].Comments %></td>
               </tr>
           <% } %>
@@ -56,6 +57,34 @@
   </div>
 <!--////////////////////////////////////////////////////-->
 
+
+<!--get stars should get info from db-->
+
+
+<script>
+  document.getElementById("stars").innerHTML = getStars(3.6);
+
+function getStars(rating) {
+
+  // Round to nearest half
+  rating = Math.round(rating * 2) / 2;
+  let output = [];
+
+  // Append all the filled whole stars
+  for (var i = rating; i >= 1; i--)
+    output.push('<i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>&nbsp;');
+
+  // If there is a half a star, append it
+  if (i == .5) output.push('<i class="fa fa-star-half-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
+
+  // Fill the empty stars
+  for (let i = (5 - rating); i >= 1; i--)
+    output.push('<i class="fa fa-star-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
+
+  return output.join('');
+
+}
+</script>
 
 <style>
 
