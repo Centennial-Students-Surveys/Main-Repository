@@ -36,199 +36,27 @@
 
 
 
-
 <div class="container-fluid">
-     <table class="table table-hover rounded-circle ">
-             <tr class="d-flex">
-                 <th class="text-center col-3">First Name</th>
-                 <th class="text-center col-3">Last Name</th>
-                 <th class="text-center col-2">Feedback</th>
-                 <th class="text-center col-1">Stars</th>
-                 <th class="text-center col-3">Comments</th>
-             </tr>
-             
-        </table>
-  </div>
-
-
-
-
-<div class="float-container">
-  <div class="name">
-<h3>Rate the Professor</h3>
-<br>
-</div>
-
-
-<div class="float-child">
-  <p>Give a rating for Skill</p>
-
-<form class="rating">
-  <label>
-    <input type="radio" name="stars" value="1" />
-    <span class="icon">★</span>
-  </label>
-  <label>
-    <input type="radio" name="stars" value="2" />
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-  </label>
-  <label>
-    <input type="radio" name="stars" value="3" />
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>   
-  </label>
-  <label>
-    <input type="radio" name="stars" value="4" />
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-  </label>
-  <label>
-    <input type="radio" name="stars" value="5" />
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-  </label>
-</form>
-
-<p>Give a rating for Knowledge</p>
-
-
-
-<form class="rating">
-  <label>
-    <input type="radio" name="stars" value="1" />
-    <span class="icon">★</span>
-  </label>
-  <label>
-    <input type="radio" name="stars" value="2" />
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-  </label>
-  <label>
-    <input type="radio" name="stars" value="3" />
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>   
-  </label>
-  <label>
-    <input type="radio" name="stars" value="4" />
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-  </label>
-  <label>
-    <input type="radio" name="stars" value="5" />
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-  </label>
-</form>
-
-<p>Give a rating for Easiness</p>
-
-<form class="rating">
-  <label>
-    <input type="radio" name="stars" value="1" />
-    <span class="icon">★</span>
-  </label>
-  <label>
-    <input type="radio" name="stars" value="2" />
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-  </label>
-  <label>
-    <input type="radio" name="stars" value="3" />
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>   
-  </label>
-  <label>
-    <input type="radio" name="stars" value="4" />
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-  </label>
-  <label>
-    <input type="radio" name="stars" value="5" />
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-  </label>
-</form>
-</div>
-
-<div class="float-child">
-  <form method="POST" autocomplete="off">
-    <label for="fname">First name: </label>
-    <input type="text" id="fname" placeholder="Enter first name" name="fname" required>
-    <br>
-    <br>
-    <label for="lname">Last Name: </label>
-    <input type="lname" id="lname" placeholder="Enter Last name" name="lname"  required>
-    <br>
-    <br>
-    <label for="Feedback">Feedback: </label>
-    <textarea id="Feedback" placeholder="Enter your feedback" name="Feedback" required></textarea>
-    <br>
-    <br>
-    <label for="Comments">Comments: </label>
-    <textarea id="Comments" placeholder="Enter your cZomments" name="v" required></textarea>
-    <br>
-    <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="button-24" value="Submit">
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/sign_in"><input type="button" class="button-24" value="Cancel"></a>
-  </form>
-</div>
-  </div>
-
-
-
-
-
-
-<!--//////////////////////////////////////////////////// Retrieving Students Feedbacks
-<div id="servcont">
-  <div id="dexper">
-      <h1 id="hexper">Feedbacks:</h1>
-  </div>
-  <div id="inserv">
-   <table class="mtable">
-       <thead>
-           <tr>
-               <th>FirstName</th>
-               <th>LastName</th>
-               <th>Feedback</th>
-               <th>Stars</th>
-               <th>Comments</th>
+  <table class="table table-hover rounded-circle ">
+           <tr class="d-flex">
+               <th class="text-center col-3">First Name</th>
+               <th class="text-center col-3">Last Name</th>
+               <th class="text-center col-2">Skills</th>
+               <th class="text-center col-2">Complexity</th>
+               <th class="text-center col-2">Department</th>
            </tr>
-       </thead>
-           <tbody>
-               <% for (let count = 0; count < Professors.length; count++) { %>
-                   <tr>
-                      <td><%= Professors[count].FirstName %></td>
-                      <td><%= Professors[count].LastName %></td>
-                      <td><%= Professors[count].StarsSkills %></td>
-                      <td><%= Professors[count].StarsComplexity %></td>
-                      <td><%= Professors[count].Department %></td>
-                   </tr>
-               <% } %>
-           </tbody>
-      </table>
-  </div>
-</div>   
-<!--////////////////////////////////////////////////////-->
+            <% for (let count = 0; count < Professors.length; count++) { %>
+              <tr class="d-flex">
+                 <td class="text-center col-3"><%= Professors[count].FirstName %></td>
+                 <td class="text-center col-3"><%= Professors[count].LastName %></td>
+                 <td class="text-center col-2"><%= Professors[count].StarsSkills %></td>
+                 <td class="text-center col-2"><%= Professors[count].StarsComplexity %></td>
+                 <td class="text-center col-2"><%= Professors[count].Department %></td>
+              </tr>
+          <% } %>
+ </table>
+</div>
+
 
 
 
@@ -237,153 +65,39 @@
 
 
 
-.float-container {
+
+
+.container-fluid{
   background-color: #fff;
   border-radius: 25px;
-  width: 500px;
-  margin-top:50px;
-  margin-left: 430px;
-  height: 450px;
-
+  padding-left: 75px;
+  padding-top:30px;
+  padding-bottom: 15px;
 }
-
-.float-child {
-    height:350px;
-    width: 50%;
-    float: left;
-    padding: 20px;
-    border: 2px solid red;
-    background-color: #fff;
-    border-radius: 25px;
-
-}  
-
+.d-flex{
+  border-radius: 25px;
+  overflow: hidden;
+  margin-top: 40px;
+}
 h1{
   color: white;
   text-align: center;
+  padding-bottom: 20px;
 }
-.name{
-  color: black;
-  text-align: center;
-}
-  .rating {
-  display: inline-block;
-  position: relative;
-  height: 50px;
-  line-height: 50px;
-  font-size: 50px;
+.table{
+    background-color: white;
+    
 }
 
-.rating label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  cursor: pointer;
+th{
+color:black
 }
 
-.rating label:last-child {
-  position: static;
-}
-
-.rating label:nth-child(1) {
-  z-index: 5;
-}
-
-.rating label:nth-child(2) {
-  z-index: 4;
-}
-
-.rating label:nth-child(3) {
-  z-index: 3;
-}
-
-.rating label:nth-child(4) {
-  z-index: 2;
-}
-
-.rating label:nth-child(5) {
-  z-index: 1;
-}
-
-.rating label input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-}
-
-.rating label .icon {
-  float: left;
-  color: transparent;
-}
-
-.rating label:last-child .icon {
-  color: #000;
-}
-
-.rating:not(:hover) label input:checked ~ .icon,
-.rating:hover label:hover input ~ .icon {
-  color: rgb(253, 204, 13);
-}
-
-.rating label input:focus:not(:checked) ~ .icon:last-child {
-  color: #000;
-  text-shadow: 0 0 5px rgb(253, 204, 13);
-}
-
-
-
-
-
-.button-24 {
-  background: black;
-  border: 1px solid #ffffff;
-  border-radius: 4.5px;
-  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
-  font-size: 12px;
-  font-weight: 60000;
-  line-height: 12px;
-  min-height: 30px;
-  outline: 0;
-  padding: 6px 7px;
-  text-align: center;
-  text-rendering: geometricprecision;
-  text-transform: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-}
-
-.button-24:hover,
-.button-24:active {
-  background-color: initial;
-  background-position: 0 0;
-  color: #000000;
-  text-decoration: none;
-
-}
-
-.button-24:active {
-  opacity: .5;
-  text-decoration: none;
-
+td{
+color:black
 }
 </style>
 
-
-<script>
-
-$(':radio').change(function() {
-  console.log('New star rating: ' + this.value);
-});
-</script>
 
     
 
