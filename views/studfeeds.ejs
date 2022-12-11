@@ -41,16 +41,22 @@
                  <th class="text-center col-2">First Name</th>
                  <th class="text-center col-2">Last Name</th>
                  <th class="text-center col-3">Feedback</th>
-                 <th class="text-center col-2">Stars</th>
+                 <th class="text-center col-1">Stars</th>
                  <th class="text-center col-3">Comments</th>
+                 <th class="text-center col-1">Add Comment</th>
              </tr>
              <% for (let count = 0; count < Feedbacks.length; count++) { %>
               <tr class="d-flex">
                  <td class="text-center col-2"><%= Feedbacks[count].FirstName %></td>
                  <td class="text-center col-2"><%= Feedbacks[count].LastName %></td>
                  <td class="text-center col-3"><%= Feedbacks[count].Feedback %></td>
-                 <td class="text-center col-2" span id=stars><%= Feedbacks[count].Stars %></td>
+                 <td class="text-center col-1" span id=stars><%= Feedbacks[count].Stars %></td>
                  <td class="text-center col-3"><%= Feedbacks[count].Comments %></td>
+                 <td class="text-center col-1">
+                   <a href="/addcomment/<%= Feedbacks[count]._id %>">
+                    <button type="button" class="button-24">Add Comment</button>
+                   </a>
+                 </td>
               </tr>
           <% } %>
         </table>
