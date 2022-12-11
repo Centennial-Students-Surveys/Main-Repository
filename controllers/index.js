@@ -20,6 +20,7 @@ let User = userModel.User; // alias
 
 
 //CONTROLLER ROUTES>>>>>>>>
+
 //HP route
 module.exports.displayHomePage = (req, res, next) => {
     res.render('index', { title: 'Home', displayName: req.user ? req.user.displayName : '' });
@@ -30,6 +31,50 @@ module.exports.displayHomePage = (req, res, next) => {
 //{
 //   res.render('studfeeds', { title: 'Student feedbacks' });
 //}
+
+//DISPLAY ADD COMMENT PAGE
+module.exports.displayAddComment = (req,res, next) =>
+{
+    //res.render('addcomment', {title: 'Add Your Comment',displayName: req.user ? req.user.displayName : '' });
+    let id = req.params.id;
+
+    feedbacksModel.findById(id, (err, feedbacks) => {
+        if(err)
+        {
+            console.log(err);
+            res.end(err);
+        }
+        else
+        {
+            //show the edit view
+            res.render('addcomment', {title: 'Add Your Comment', Feedbacks: feedbacks, displayName: req.user ? req.user.displayName : ''})
+        }
+    });
+}
+
+//POST FROM ADD COMMENT PAGE
+module.exports.processAddComment = (req, res, next) => {
+    let id = req.params.id
+
+    let updatedFeedback = feedbacksModel({
+        "_id": id,
+        "NickName": req.body.NickName,
+        "Comment": req.body.Comment
+    });
+
+    feedbacksModel.findOneAndUpdate({_id: id},{$push: {Comments: {$each: [{NickName: req.body.NickName,Comment: req.body.Comment}]}}}, updatedFeedback, (err) =>
+    {
+        if(err)
+        {
+            console.log(err);
+            res.end(err);
+        }
+        else
+        {
+            res.redirect('/studfeeds');
+        }
+    });
+}
 
 //Updated Route to Student's feedbacks page
 module.exports.displayStudentFeedbacks = (req, res, next) => {

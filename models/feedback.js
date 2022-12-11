@@ -1,5 +1,17 @@
 let mongoose = require('mongoose');
 
+const reqComment =
+{
+    type:String,
+    required: true
+}
+
+const commentsSchema = mongoose.Schema(
+{
+    NickName: reqComment,
+    Comment: reqComment
+})
+
 let feedbackModel = mongoose.Schema(
 {
     UserId: Number,
@@ -7,7 +19,7 @@ let feedbackModel = mongoose.Schema(
     LastName: String,
     Feedback: String,
     Stars: Number,
-    Comments: Array
+    Comments: [commentsSchema]
 },
 {
     collection: "feedbacks"

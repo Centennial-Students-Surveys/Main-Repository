@@ -11,6 +11,12 @@ router.get('/', indexController.displayHomePage);
 //Get Student's feedbacks through controller folder <>
 router.get('/studfeeds', indexController.displayStudentFeedbacks)
 
+//<> Route to Display Add Comment Page
+router.get('/addcomment/:id', indexController.displayAddComment);
+
+//<> Route to POST from Add Comment Page
+router.post('/addcomment/:id', indexController.processAddComment);
+
 //Get Professor's page through controller folder <>
 router.get('/profrate', indexController.displayProfessors);
 
