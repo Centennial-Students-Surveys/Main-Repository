@@ -33,7 +33,7 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    
+    <hr>
 <!--//////////////////////////////////////////////////// Retrieving Students Feedbacks-->
   <div class="container-fluid">
      <table class="table table-hover rounded-circle ">
@@ -43,7 +43,7 @@
                  <th class="text-center col-3">Feedback</th>
                  <th class="text-center col-1">Stars</th>
                  <th class="text-center col-3">Comments</th>
-                 <th class="text-center col-1">Add Comment</th>
+                 <th class="text-center col-1">Add</th>
              </tr>
              <% for (let count = 0; count < Feedbacks.length; count++) { %>
               <tr class="d-flex">
@@ -71,8 +71,14 @@
 
 <style>
 
+
+
+.table-hover tbody tr:hover td {
+    background: grey;
+}
+
 .container-fluid{
-  background-color: #fff;
+  background-color: #191919;
   border-radius: 25px;
   padding-left: 75px;
   padding-bottom: 15px;
@@ -86,21 +92,74 @@ h1{
   color: white;
   text-align: center;
   padding-bottom: 20px;
+  font-size: 75px;
+
 }
 .table{
-    background-color: white;
+  background-color: #191919;
     
 }
 
 th{
 color:black;
-background-color:darkgrey;
+
+background-color: #98F725;
+
 
 }
 
 td{
-color:black
+color:white;
+
 }
+
+
+
+
+.button-24 {
+  background: white;
+  height:300px;
+  border: 1px solid black;
+  border-radius: 4.5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 12px;
+  font-weight: 60000;
+  line-height: 12px;
+  min-height: 30px;
+  outline: 0;
+  padding: 6px 7px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button-24:hover,
+.button-24:active {
+  background-color:  #191919;
+
+  background-position: 0 0;
+  color: white;
+  text-decoration: none;
+
+}
+
+.button-24:active {
+  opacity: .5;
+  text-decoration: none;
+
+}
+
+
+
 </style>
 
   </body>
