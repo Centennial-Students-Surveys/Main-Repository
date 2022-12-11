@@ -8,6 +8,7 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="icon" href="/images/feedback.png">
+    
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -36,32 +37,38 @@
   <div class="container">
   <% if(typeof displayName == 'string' && displayName) {%>
   <p>FORM FOR FEEDBACK</p>
-    <form method="POST" autocomplete="off">
-        <label for="FirstName">Your First name: </label>
-        <input type="text" id="FirstName" placeholder="First name" name="FirstName" required>
-        <br>
-        <br>
-        <label for="LastName">Your Last name: </label>
-        <input type="text" id="LastName" placeholder="Last name" name="LastName" required>
-        <br>
-        <br>
-        <label for="Feedback">Your Feedback: </label>
-        <!--<input type="textarea" id="Feedback" placeholder="Enter your feedback" name="Feedback" required>-->
-        <textarea id="Feedback" placeholder="Enter your feedback" name="Feedback" required></textarea>
-        <br>
-        <br>
-        <label for="Stars">Stars:</label>
-        <input type="number" placeholder="Enter rate number 1-5" id="Stars" name="Stars" required>
-        <br>
-        <br>
-        <input type="submit" class="button-24" value="Submit Feedback">
-        
-        <!--
-        <a href="settings">
-          <input type="button" class="button-24" value="Settings">
-        </a>
-        -->
-    </form>
+  <form method="POST" autocomplete="off">
+    <label for="FirstName">Your First name: </label>
+    <input type="text" id="FirstName" placeholder="First name" name="FirstName" required>
+    <br>
+    <br>
+    <label for="LastName">Your Last name: </label>
+    <input type="text" id="LastName" placeholder="Last name" name="LastName" required>
+    <br>
+    <br>
+    <label for="Feedback">Your Feedback: </label>
+    <!--<input type="textarea" id="Feedback" placeholder="Enter your feedback" name="Feedback" required>-->
+    <textarea id="Feedback" placeholder="Enter your feedback" name="Feedback" required></textarea>
+    <br>
+    <br>
+    <label for="Stars">Overall College Rate:</label>
+    <select name="Stars" class="" id="Stars">
+            <option value="1">✮</option>
+            <option value="2">✮✮</option>
+            <option value="3">✮✮✮</option>
+            <option value="4">✮✮✮✮</option>
+            <option value="5">✮✮✮✮✮</option>
+    </select>
+    <br>
+    <br>
+    <input type="submit" class="button-24" value="Submit Feedback">
+    
+    <!--
+    <a href="settings">
+      <input type="button" class="button-24" value="Settings">
+    </a>
+    -->
+</form>
 
     <button class="button-24"><a href="/logout">Log Out</a></button>
     <% } else { %>
