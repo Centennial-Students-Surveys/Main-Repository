@@ -13,13 +13,14 @@
     <h1><%= title %></h1>
   
 
-  <form method="POST">
+  <form method="POST" autocomplete="off">
     <label for="NickName">Nick Name:</label>
-    <input type="text" name="NickName" id="NickName">
+    <input type="text" name="NickName" id="NickName" required>
     <br>
     <br>
     <label for="Comment">Your Comment:</label>
-    <input type="text" name="Comment" id="Comment">
+    <textarea id="Comment" placeholder="Enter your feedback" name="Comment" required></textarea>
+    <!--<input type="text" name="Comment" id="Comment" required>--> 
     <br>
     <br>
     <input class="button-24" type="submit" placeholder="Save Changes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

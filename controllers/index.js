@@ -22,20 +22,14 @@ let User = userModel.User; // alias
 //CONTROLLER ROUTES>>>>>>>>
 
 //HP route
-module.exports.displayHomePage = (req, res, next) => {
+module.exports.displayHomePage = (req, res, next) => 
+{
     res.render('index', { title: 'Home', displayName: req.user ? req.user.displayName : '' });
 }
-
-//Route to Student's feedbacks page
-//module.exports.displayStudentFeedbacks = (req, res, next) => 
-//{
-//   res.render('studfeeds', { title: 'Student feedbacks' });
-//}
 
 //DISPLAY ADD COMMENT PAGE
 module.exports.displayAddComment = (req,res, next) =>
 {
-    //res.render('addcomment', {title: 'Add Your Comment',displayName: req.user ? req.user.displayName : '' });
     let id = req.params.id;
 
     feedbacksModel.findById(id, (err, feedbacks) => {
@@ -46,14 +40,14 @@ module.exports.displayAddComment = (req,res, next) =>
         }
         else
         {
-            //show the edit view
             res.render('addcomment', {title: 'Add Your Comment', Feedbacks: feedbacks, displayName: req.user ? req.user.displayName : ''})
         }
     });
 }
 
 //POST FROM ADD COMMENT PAGE
-module.exports.processAddComment = (req, res, next) => {
+module.exports.processAddComment = (req, res, next) => 
+{
     let id = req.params.id
 
     let updatedFeedback = feedbacksModel({
@@ -77,7 +71,8 @@ module.exports.processAddComment = (req, res, next) => {
 }
 
 //Updated Route to Student's feedbacks page
-module.exports.displayStudentFeedbacks = (req, res, next) => {
+module.exports.displayStudentFeedbacks = (req, res, next) => 
+{
     feedbacksModel.find((err, feedbacks) => {
         if (err) {
             return console.error(err);
@@ -90,7 +85,6 @@ module.exports.displayStudentFeedbacks = (req, res, next) => {
 //Retrieve all Professor's rate page
 module.exports.displayProfessors = (req, res, next) => 
 {
-    //res.render('profrate', { title: 'Professors rate page' });
     profmodel.find((err, professor) => 
     {
         if(err)
@@ -105,14 +99,16 @@ module.exports.displayProfessors = (req, res, next) =>
 };
 
 //Route to About College info
-module.exports.displayAboutPage = (req, res, next) => {
-    res.render('about', { title: 'About college page' });
+module.exports.displayAboutPage = (req, res, next) => 
+{
+    res.render('about', { title: 'About college' });
 };
 
 //Route to account
 
 //Get Route to Sign in
-module.exports.displayLoginPage = (req, res, next) => {
+module.exports.displayLoginPage = (req, res, next) => 
+{
     if (!req.user) {
         res.render('sign_in', {
             title: 'Login',
@@ -125,7 +121,8 @@ module.exports.displayLoginPage = (req, res, next) => {
 }
 
 //Post Sign in into Account
-module.exports.processLoginPage = (req, res, next) => {
+module.exports.processLoginPage = (req, res, next) => 
+{
     passport.authenticate('local',
         (err, user, info) => {
             // server err?
@@ -160,21 +157,27 @@ module.exports.processLoginPage = (req, res, next) => {
 }
 
 
-module.exports.displayRegisterPage = (req, res, next) => {
+module.exports.displayRegisterPage = (req, res, next) => 
+{
     // check if the user is not already logged in
-    if (!req.user) {
-        res.render('signup/signup', {
+    if (!req.user) 
+    {
+        res.render('signup/signup', 
+        {
             title: 'Register',
             messages: req.flash('registerMessage'),
             displayName: req.user ? req.user.displayName : ''
         });
-    } else {
+    } 
+    else 
+    {
         return res.redirect('/');
     }
 }
 
 
-module.exports.processRegisterPage = (req, res, next) => {
+module.exports.processRegisterPage = (req, res, next) => 
+{
     //Needs to be add some details
     let newUser = new User({
         username: req.body.username,
@@ -183,23 +186,30 @@ module.exports.processRegisterPage = (req, res, next) => {
         displayName: req.body.displayName
     });
 
-    User.register(newUser, req.body.password, (err) => {
-        if (err) {
+    User.register(newUser, req.body.password, (err) => 
+    {
+        if (err) 
+        {
             console.log("Error: Inserting New User");
-            if (err.name == "UserExistsError") {
+            if (err.name == "UserExistsError") 
+            {
                 req.flash(
                     'registerMessage',
                     'Registration Error: User Already Exists!'
                 );
                 console.log('Error: User Already Exists!')
             }
-            return res.render('signup/signup', {
+            return res.render('signup/signup', 
+            {
                 title: 'Sign Up',
                 messages: req.flash('signupMessage'),
                 displayName: req.user ? req.user.displayName : ''
             });
-        } else {
-            return passport.authenticate('local')(req, res, () => {
+        } 
+        else 
+        {
+            return passport.authenticate('local')(req, res, () =>
+            {
                 res.redirect('/account-account');
             });
         }
@@ -207,9 +217,12 @@ module.exports.processRegisterPage = (req, res, next) => {
 }
 
 
-module.exports.performLogout = (req, res, next) => {
-    req.logout(function(err) {
-        if (err) {
+module.exports.performLogout = (req, res, next) => 
+{
+    req.logout(function(err) 
+    {
+        if (err) 
+        {
             return next(err);
         }
         res.redirect('/');
