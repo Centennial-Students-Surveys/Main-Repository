@@ -1,9 +1,13 @@
 {
   "name": "centennial-feedbacks",
-  "version": "0.0.0",
-  "private": true, 
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
     "start": "nodemon ./bin/www"
+  },
+  "engines": {
+    "node": "^18.12.01",
+    "npm": "^9.0.0"
   },
   "dependencies": {
     "@types/connect-flash": "^0.0.37",
@@ -33,5 +37,17 @@
     "@types/passport": "^1.0.11",
     "@types/passport-local": "^1.0.34",
     "@types/passport-local-mongoose": "^6.1.1"
-  }
+  },
+  "description": "This is the readme file\r Project description\r added dependencies in package.json",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Centennial-Students-Surveys/Main-Repository.git"
+  },
+  "author": "Group 6",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Centennial-Students-Surveys/Main-Repository/issues"
+  },
+  "homepage": "https://github.com/Centennial-Students-Surveys/Main-Repository#readme"
 }
